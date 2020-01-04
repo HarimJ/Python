@@ -1,0 +1,25 @@
+https://www.w3schools.com/bootstrap4/bootstrap_tables.asp
+
+h1 : 글씨크기
+p : 변화를 주려고 단락구분
+
+body 가 화면에 나오는것. 
+
+
+css = 계층적인 스타일 - 페이지의 공통 규격을 주기 위해서 스타일을 지정해준다. 
+                             - 한번 지정해 주면 밑에는 지정하지 않아도 된다. 
+
+external css - 파일로 만든것 - 밖으로 내보내려고
+
+link - 링크, (java)
+
+
+
+
+table
+tr - 한행
+td - 한
+
+
+  ajax = 페이지를 이동하지 않고 변경? 하기 
+ 명령문에는 {} 하나/  데이터 넣을때는 {{}} 두개
