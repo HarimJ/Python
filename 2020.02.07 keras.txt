@@ -1,0 +1,102 @@
+keras 
+backend - tensorflow 
+           - CNTK (MS)   wrapper(여러개의 함수를 보자기로 감싸듯이)
+           - theano
+
+costant, variables(가중치), placeholdr(데이터주입)   -----> Model (layer 방식)
+           행렬연산 (오차기반 학습)/ loss function/ Activation/ optimization  -------> compile (우리는 tensorflow 로 한다)
+           for, epoch, batchsize  ----> fit (scikits)
+
+
+Moel : layer 방식이란
+- 가중치를 선언할 필요가 없다 (가중치 만들어주는 함수 : Dense(출, 입)) ---------> compile 할때 자동으로 만들어 준다.
+- layer 추가할때는 add 를 하면 된다. 
+- return 으로 받지 않는다. 
+
+
+즉, 출력 차수만 지정해주면 된다. 입력차수는 그 전에 나온 출력 차수가 자동으로 들어가기 때문.
+단, 맨 처음 입력 차수는 지정을 해줘야 한다. 
+
+(1)
+model 을 만드는 방법
+1. Sequential  : single input, single output
+2. Functional  : multi input, multi output
+3. Model : 모델들의 상속을 받아서 사용한다
+
+(2)
+layer 로 만든것들
+1.Input
+2.Dense  --->  input과 dense망을 나오면 회귀분석을 할수 있다. 
+3.CNN
+4. RNN
+
+(3)
+compile 에 들어가는 것
+1. loss function
+2. activation
+3. optimization
+
+(4)
+data 입력
+1. epoch
+2. batchsize
+3. validation
+(fit 에 넣어주면 알아서 작동 됨)
+
+(5)                  (6) 
+evaluate   ---->  predict
+
+
+keras 를 scikits 와 연결  (scikits는 pipeline & GridSearchCV)
+classifier
+regressor
+keras는 hyper parameter를 자동으로 tunning 시킨다. (gridsearchcv를 사용해서)   <---- 시간단축
+
+
+cnn은 이미지에서 특징 추출
+rnn은 시간적 텍스트에서 특징 추출
+keras 는 자동화! 를 위해서 
+
+keras에서
+cnn은 applicator
+transfer learning
+pre-training
+
+
+keras에서
+rnn 은 기울기 소실 문제를 겪는다. (시간 순서대로 단계가 지나가니까)
+그래서 만들어진게 LSTM  ----> GRU (input, output) 회로정리를 해서 시간 단출.
+
+GRU를 통해서 seq2seq를 사용함. (텍스트 두개를 연결한 망 <--- state값으로 연결)
+attention (주입식망, 집중망) : 자기들끼리 입력되어지는 걸 가중치 3개(query, key, value)를 가지고 학습해서 중요한걸 정한다. 
+NMT : neural machine translation
+transformer : attension + NMT  (image, sound, text 데이터르 ㄹ사용)
+BERT : bidirectional. encoding. representation from transformer
+
+image movie => opencv
+sound => librosa
+text => mltk, corpus  -> gemsion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
