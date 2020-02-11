@@ -1,0 +1,73 @@
+RNN (Recurrent neural network)
+ - 순서가 있는 데이터의 특징을 추출
+ - cell들이 여러개가 모여있는 구조. cell + cell +...+cell
+ - input data도 vector로 들어온다
+ - cell 에 가중치가 있어서 데이터가 가중치와 만나서 나오면 특성이 된다. 
+ - 그 특성이 그 다음셀에 전달이 된다. (state)
+ - 그 특성과 input data를 같이 cell에 들어가기 때문에 시간이 걸린다. 
+ - 계속 셀에 넘겨지면 기울기 소실 문제가 생긴다. 
+ - 계속 셀에 넘겨지면서 영향력이 누적이되서 과도한 영향력을 받게 된다.
+ - 이런 문제를 해결하기 위해서 LSTM   => 회로를 2개를 만들어서 (state c & state h)
+ - 두개의 회로로 전달되어서 망을 연결 시키는 것을 seq2seq
+
+seq2seq
+ - 전에 생긴 특성이 들어와야 하기 때문에 처음 입력 데이터는 빈 공간으로 만들기
+ - GRU ( 계산이 작다. 빈공간을 만들어야 하기 때문에 비싸? 서 만든 것. LSTM과 동일한 역활)
+
+
+RNN은
+1. Time Series
+   - TimeData Generator
+   - 시간 데이터를 sequence로 만든다
+   - 자기 상관성이 있는지 확인해야한다
+   - window ( 그 전 시간들이 그 다음 시간에 영향이 주는것을 보는것. )  <- 이게 sequence로 묶는 것. 
+        -  (10개를 보고 그 다음시간과 영향을 보고 , 또 그다음 10개를 묶어서 다시 보고 (매년) )  <-- 이걸 하는 게 TimeData Generator
+   - 정상성을 뜬 데이터만 사용가능 (분산, 공산성 등이 일정)
+       - ex) AR (auto regression : 자기회귀), MA (moving average: 이동 평균법), ARMA , ARIMA? ( 시계열 분석 - integrate사용해서)
+   - 비정상성을 '차분'을 해서 정상성을 만든다. 
+       - 차분 : 뒤에 데이터에서 앞에 데이터를 뺀다 == (결국)미분한다.
+
+2. Text mining
+   - tokonization (단어 하나하나를 자른다)  
+   - Dictionary ( 중복된 단어가 없게 )
+   - 단어에 번호를 매긴다 
+   - 단어에 인덱싱  <= one-hot encoding 
+   - vectorization을 해준다. (신경망에서 가중치를 만나 사이즈를 줄여주고 근처에 가까운 단어를 확인한다)
+            - 가까운 단어는 비슷한? 벡터를 준다 => word to back? vec?
+            - vector를 가지고 단어 또는 문장을 찾을 수 있게 한다.
+            - word to back : 벡터를 가까이에 있는 단어를 ( 같이 사용되는 단어들을 ) 같이 훈련시킨다?
+   - layer 를 지원한다.  
+   - 결국 tesxt도 숫자화 되어야 하고 그게 벡터화 되어져서 특징을 추출(가까이에 있는 단어의 유사도)
+   - 이렇게 vector된것을 seq2seq를 하면 더 정확해 진다. 
+  - attention : 데이터가 들어가면 3가지 가중치에서  query/ key/ value 를 가진다.
+       - attention point ( 가중치 + key)
+       - attention value ( 가중치 + value)
+  - NMT : attention망을 가져서 단어들의 중요도를 뽑는다.
+
+
+> LSTM과 NMT의 중요도롤 같이 사용해서 단어의 특징을 더 잘 추출한다.
+> Transformer : attention망을 여러겹 쌓아서 만든것
+> BERT는 트랜스포머르 만들어진것. 
+
+seq2seq 로 할수 있는것
+1. translation
+2. chatbot
+3. summerization
+
+ * LSTM & BERT : seq2se2의 발전 버전
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
